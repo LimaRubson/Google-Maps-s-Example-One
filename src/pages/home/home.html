@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+       mapsExampleOne
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+      <ion-toolbar color="primary">
+
+        <ion-searchbar
+            #searchbar
+            [(ngModel)]="autocomplete.query"
+            [showCancelButton]="true"
+            (ionInput)="updateSearch()"
+            placeholder="Informe a origem">
+
+        </ion-searchbar>
+      
+      </ion-toolbar>
+
+    <ion-list>
+
+        <ion-item *ngFor="let item of autocompleteItems" (click)="chooseItem(item)">
+
+            {{ item.description }}
+
+        </ion-item>
+
+    </ion-list><br/>
+  
+        <button ion-item (click)="mudarStatus()" class="child">
+
+             <ion-icon item-right name="add" *ngIf="!statusLocal"></ion-icon>
+             <ion-icon item-right name="close" *ngIf="statusLocal"></ion-icon>
+
+             {{ nameLocal }}
+
+        </button>
+
+        <ion-list *ngIf="statusLocal" >
+
+            <ion-item *ngFor="let item of locaisUniversidades" (click)="selecionarLocal(item)">
+
+                  {{ item.name }}
+
+            </ion-item>
+
+        </ion-list><br/>
+
+    <button color="primary" ion-button full (click)="calculateAndDisplayRoute()">Obter rota</button><br/><br/>
+
+    <ion-card-content [hidden]="status" #map id="map"></ion-card-content>
+
+  </ion-card>
+
+</ion-content>
