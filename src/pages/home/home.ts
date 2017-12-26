@@ -10,7 +10,7 @@ declare var google;
 })
 export class HomePage {
 
-  segments: string = "casaForte";
+  segments: string = "casaForte";//Declaração da variável 'segments' que recebe o nome "casaForte" 
 
   @ViewChild('map') mapElement: ElementRef; //Acessa o elemento 'map' do DOM e declara do tipo ElementRef
   @ViewChild('searchbar') searchbar: Searchbar; //Acessa o elemento 'searchbar' do DOM e declara do tipo Searchbar
@@ -48,6 +48,7 @@ export class HomePage {
 
         };
 
+        //Inicializa a variável 'locaisUniversidades' como vetor com loacis de Universidades
         this.locaisUniversidades = [
 
           {name: 'UFPE - Universidade Federal de Pernambuco', value: 'Av. Prof. Moraes Rego, 1235 - Cidade Universitária, Recife - PE, 50670-901'},
@@ -58,6 +59,7 @@ export class HomePage {
 
   }
 
+  //Método que pega o local selecionado
   selecionarLocal(local: any) {
 
       this.nameLocal = local.name;
@@ -68,12 +70,14 @@ export class HomePage {
 
   }
 
+  //Método que muda o 'status'
   mudarStatus() {
 
       this.statusLocal = !this.statusLocal;
 
   }
 
+  //Método que pega o ítem selecionado
   chooseItem(item: any) {
 
       console.log('modal > chooseItem > item > ', item.description); //Exibe no console o lugar selecionado
@@ -88,6 +92,7 @@ export class HomePage {
 
   }
 
+  //Método que atualiza as sugestões de lugares
   updateSearch() {
 
       console.log('modal > updatesearch'); //Exibe no console a informação
@@ -143,6 +148,7 @@ export class HomePage {
 
 }
 
+  //Método que inicializa um mapa
   initMap() { // este código inicializa o mapa no local desejado
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
@@ -156,6 +162,7 @@ export class HomePage {
 
   }
 
+//Método que calcula a rota desejada
  calculateAndDisplayRoute() { // este código calcula a distância inicial e final
 
      this.initMap();
