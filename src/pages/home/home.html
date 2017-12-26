@@ -12,8 +12,8 @@
   <ion-card>
 
       <ion-toolbar color="primary">
-
-        <ion-searchbar
+        <!-- Campo de pesquisa de origem  -->
+        <ion-searchbar 
             #searchbar
             [(ngModel)]="autocomplete.query"
             [showCancelButton]="true"
@@ -24,6 +24,7 @@
       
       </ion-toolbar>
 
+    <!-- Lista dos locais de origem -->
     <ion-list>
 
         <ion-item *ngFor="let item of autocompleteItems" (click)="chooseItem(item)">
@@ -33,7 +34,7 @@
         </ion-item>
 
     </ion-list><br/>
-  
+        <!-- Botão que seleciona o local desejado -->
         <button ion-item (click)="mudarStatus()" class="child">
 
              <ion-icon item-right name="add" *ngIf="!statusLocal"></ion-icon>
@@ -43,6 +44,7 @@
 
         </button>
 
+        <!-- Lista de locais de destino -->
         <ion-list *ngIf="statusLocal" >
 
             <ion-item *ngFor="let item of locaisUniversidades" (click)="selecionarLocal(item)">
@@ -52,9 +54,10 @@
             </ion-item>
 
         </ion-list><br/>
-
+    <!-- Botão que calcula a rota -->
     <button color="primary" ion-button full (click)="calculateAndDisplayRoute()">Obter rota</button><br/><br/>
-
+    
+    <!-- Mapa -->
     <ion-card-content [hidden]="status" #map id="map"></ion-card-content>
 
   </ion-card>
